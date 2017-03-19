@@ -1,6 +1,6 @@
 [submodule "src/MOM6"]
 	path = src/MOM6
-	url = git@github.com:ESMG/MOM6
+	url = git@github.com:MJHarrison-GFDL/MOM6
 [submodule "src/SIS2"]
 	path = src/SIS2
 	url = git@github.com:ESMG/SIS2
