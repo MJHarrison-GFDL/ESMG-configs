@@ -1,0 +1,7 @@
+! Blank file in which we can put "overrides" for parameters
+!DEBUG=True
+!VERBOSITY = 9
+#override OBC_SEGMENT_001 = "J=N,I=N:0,FLATHER,OBLIQUE"
+#override OBC_SEGMENT_002 = "J=0,I=0:N,FLATHER,OBLIQUE"
+#override OBC_SEGMENT_003 = "I=N,J=0:N,FLATHER,OBLIQUE"
+#override OBC_SEGMENT_004 = "I=0,J=N:0,FLATHER,OBLIQUE"
