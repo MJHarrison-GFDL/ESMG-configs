@@ -58,6 +58,7 @@ REENTRANT_X = False             !   [Boolean] default = True
 ! === module MOM_open ===
 OBC_NUMBER_OF_SEGMENTS = 1
 OBC_SEGMENT_001 = "I=N,J=0:N,FLATHER"
+OBC_SEGMENT_001_DATA = "U=value:0.0,V=value:0.0,SSH=value:0.0"
 OBC_USER_CONFIG = tidal_bay
 TIDES = False                   !   [Boolean] default = False
                                 ! If true, apply tidal momentum forcing.
@@ -76,7 +77,7 @@ OBC_FREESLIP_STRAIN = True      !   [Boolean] default = False
 OBC_ZERO_BIHARMONIC = True      !   [Boolean] default = False
                                 ! If true, zeros the Laplacian of flow on open boundaries in the biharmonic
                                 ! viscosity term.
-! === module MOM_tidal_forcing === 
+! === module MOM_tidal_forcing ===
 TIDE_M2 = False                  !   [Boolean] default = False
                                 ! If true, apply tidal momentum forcing at the M2
                                 ! frequency. This is only used if TIDES is true.
@@ -307,7 +308,7 @@ LINEAR_DRAG = True              !   [Boolean] default = False
                                 ! law is cdrag*DRAG_BG_VEL*u.
 CDRAG = 0.0003                  !   [nondim] default = 0.003
                                 ! CDRAG is the drag coefficient relating the magnitude of
-                                ! the velocity field to the bottom stress. CDRAG is only 
+                                ! the velocity field to the bottom stress. CDRAG is only
                                 ! used if BOTTOMDRAGLAW is defined.
 DRAG_BG_VEL = 1.0               !   [m s-1] default = 0.0
                                 ! DRAG_BG_VEL is either the assumed bottom velocity (with
