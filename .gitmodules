@@ -22,3 +22,6 @@
 [submodule "src/icebergs"]
 	path = src/icebergs
 	url = git@github.com:NOAA-GFDL/icebergs
+[submodule "tools/brushcutter"]
+        path = tools/brushcutter
+	url = git@github.com:raphaeldussin/brushcutter.git
