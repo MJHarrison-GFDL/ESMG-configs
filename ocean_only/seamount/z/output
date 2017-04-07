@@ -1,0 +1,76 @@
+NOTE from PE     0: MPP_DOMAINS_SET_STACK_SIZE: stack size set to    32768.
+&MPP_IO_NML
+ HEADER_BUFFER_VAL=      16384,
+ GLOBAL_FIELD_ON_ROOT_PE=T,
+ IO_CLOCKS_ON=F,
+ SHUFFLE=          0,
+ DEFLATE_LEVEL=         -1,
+ /
+NOTE from PE     0: MPP_IO_SET_STACK_SIZE: stack size set to     131072.
+NOTE from PE     0: MPP_DOMAINS_SET_STACK_SIZE: stack size set to   710000.
+NOTE from PE     0: ======== Model being driven by MOM_driver ========
+NOTE from PE     0: callTree: o Program MOM_main, MOM_driver.F90
+NOTE from PE     0: open_param_file: MOM_input has been opened successfully.
+NOTE from PE     0: open_param_file: MOM_override has been opened successfully.
+ MOM domain decomposition
+whalo =    3, ehalo =    3, shalo =    3, nhalo =    3
+  X-AXIS =   20  20
+  Y-AXIS =   20  20
+NOTE from PE     0: diag_manager_mod::diag_manager_init: prepend_date only supported when diag_manager_init is called with time_init present.
+ MOM domain decomposition
+whalo =    3, ehalo =    3, shalo =    3, nhalo =    3
+  X-AXIS =   20  20
+  Y-AXIS =   20  20
+ MOM domain decomposition
+whalo =    3, ehalo =    3, shalo =    3, nhalo =    3
+  X-AXIS =   20  20
+  Y-AXIS =   20  20
+ MOM domain decomposition
+whalo =    3, ehalo =    3, shalo =    3, nhalo =    3
+  X-AXIS =   20  20
+  Y-AXIS =   20  20
+NOTE from PE     0: MOM_initialization.F90, initialize_thickness_uniform: setting thickness
+ MOM domain decomposition
+whalo =    3, ehalo =    3, shalo =    3, nhalo =    3
+  X-AXIS =   20  20
+  Y-AXIS =   20  20
+
+WARNING from PE     0: MPP_OPEN: File ./CPU_stats opened WRONLY already exists!
+
+
+WARNING from PE     0: MPP_OPEN: File ./CPU_stats opened WRONLY already exists!
+
+NOTE from PE     0: MOM_surface_forcing: buoyancy forcing has been set to omitted.
+
+WARNING from PE     0: MPP_OPEN: File ./ocean.stats opened WRONLY already exists!
+
+
+WARNING from PE     0: MPP_OPEN: File ./ocean.stats opened WRONLY already exists!
+
+MOM Day       0.000      0: En 3.399654E-05, MaxCFL  0.00000, Mass 1.416805834551E+18, Salt  34.98898355250, Temp   0.00000000000
+    Total Energy: 42C5E751561BEBD3  4.8166492452823648E+13
+    Total Mass:   1.4168058345506990E+18, Change:   0.0000000000000000E+00 Error:  0.00000E+00 ( 0.0E+00)
+    Total Salt:   4.9572596042186192E+16, Change:   0.0000000000000000E+00 Error:  0.00000E+00 ( 0.0E+00)
+    Total Heat:   0.0000000000000000E+00, Change:   0.0000000000000000E+00 Error:  0.00000E+00
+MOM Day       1.000     96: En 3.439075E-05, MaxCFL  0.00249, Mass 1.416805895527E+18, Salt  34.98898346372, Temp   0.00000000000
+    Total Energy: 42C62856A37C4419  4.8725016115336195E+13
+    Total Mass:   1.4168058955272115E+18, Change:   6.0976512628938774E+10 Error:  6.09765E+10 ( 4.3E-08)
+    Total Salt:   4.9572598049896096E+16, Change:   2.0077099008535001E+09 Error:  2.00771E+09 ( 4.1E-08)
+    Total Heat:   0.0000000000000000E+00, Change:   0.0000000000000000E+00 Error:  0.00000E+00
+MOM Day       2.000    192: En 3.460461E-05, MaxCFL  0.00569, Mass 1.416805886990E+18, Salt  34.98898359544, Temp   0.00000000000
+    Total Energy: 42C64B9CD555CE3C  4.9028019170204469E+13
+    Total Mass:   1.4168058869901197E+18, Change:  -8.5370919904775009E+09 Error: -8.53709E+09 (-6.0E-09)
+    Total Salt:   4.9572597937826168E+16, Change:  -1.1206992460650000E+08 Error: -1.12070E+08 (-2.3E-09)
+    Total Heat:   0.0000000000000000E+00, Change:   0.0000000000000000E+00 Error:  0.00000E+00
+MOM Day       3.000    288: En 3.504517E-05, MaxCFL  0.00865, Mass 1.416805834806E+18, Salt  34.98898361900, Temp   0.00000000000
+    Total Energy: 42C69446C688A71E  4.9652196774222234E+13
+    Total Mass:   1.4168058348057329E+18, Change:  -5.2184387012466461E+10 Error: -5.21844E+10 (-3.7E-08)
+    Total Salt:   4.9572596145320200E+16, Change:  -1.7925059691475000E+09 Error: -1.79251E+09 (-3.6E-08)
+    Total Heat:   0.0000000000000000E+00, Change:   0.0000000000000000E+00 Error:  0.00000E+00
+
+FATAL from PE     0: NETCDF ERROR: Permission denied File=RESTART/MOM.res.nc
+
+
+FATAL from PE     0: NETCDF ERROR: Permission denied File=RESTART/MOM.res.nc
+
+application called MPI_Abort(MPI_COMM_WORLD, 1) - process 0
