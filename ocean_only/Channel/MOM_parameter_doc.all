@@ -435,7 +435,10 @@ OBC_USER_CONFIG = "supercritical" ! default = "none"
                                 !    DOME - specified inflow on northern boundary
                                 !    tidal_bay - Flather with tidal forcing on eastern boundary
                                 !    supercritical - now only needed here for the allocations
+                                !    Kelvin - barotropic Kelvin wave forcing on the western boundary
                                 !    USER - user specified
+SUPERCRITICAL_ZONAL_FLOW = 8.57 !   [m/s] default = 8.57
+                                ! Constant zonal flow imposed at upstream open boundary.
 READ_OBC_UV = False             !   [Boolean] default = False
                                 ! If true, read the values for the velocity open boundary
                                 ! conditions from the file specified by OBC_FILE.
@@ -452,6 +455,8 @@ READ_OBC_TS = False             !   [Boolean] default = False
 NUM_DIAG_COORDS = 0             ! default = 1
                                 ! The number of diagnostic vertical coordinates to use.
                                 ! For each coordinate, an entry in DIAG_COORDS must be provided.
+DIAG_MISVAL = -1.0E+34          !   [not defined] default = -1.0E+34
+                                ! Set the default missing value to use for diagnostics.
 AVAILABLE_DIAGS_FILE = "available_diags.000000" ! default = "available_diags.000000"
                                 ! A file into which to write a list of all available
                                 ! ocean diagnostics that can be included in a diag_table.
