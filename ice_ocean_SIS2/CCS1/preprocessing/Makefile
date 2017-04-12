@@ -11,7 +11,8 @@ showenv:
 	-python --version
 
 local: 
-	(cd ../../../tools/brushcutter;python setup.py install)
+#Brushcutter is included in my ESMPY environment
+#(cd ../../../tools/brushcutter;python setup.py install)
 
 obc_data: local
 	(source activate ESMPY;python CreateOBCsegments.py)
