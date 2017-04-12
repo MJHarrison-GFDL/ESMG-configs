@@ -1,6 +1,6 @@
 SHELL=bash -f
 
-all: obc_data
+all: obc_data IC
 
 
 showenv:
@@ -10,9 +10,8 @@ showenv:
 	which python
 	-python --version
 
-local: 
-#Brushcutter is included in my ESMPY environment
-#(cd ../../../tools/brushcutter;python setup.py install)
-
-obc_data: local
+obc_data: 
 	(source activate ESMPY;python CreateOBCsegments.py)
+
+IC: 
+	(source activate MIDAS;python IC.py)
