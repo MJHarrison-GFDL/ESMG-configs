@@ -5,6 +5,7 @@
 
 import numpy
 import scipy.io
+
 import matplotlib.pyplot as plt
 #get_ipython().magic(u'matplotlib inline')
 
@@ -12,7 +13,7 @@ import matplotlib.pyplot as plt
 # In[11]:
 
 #Open ROMS grid file
-if 'nc' not in vars(): nc = scipy.io.netcdf_file('CCS_7k_0-360_fred_grd.nc')
+if 'nc' not in vars(): nc = scipy.io.netcdf_file('CCS2_smoother_0-360.nc')
 
 
 # In[12]:
@@ -173,6 +174,3 @@ rg.close()
 
 
 # In[ ]:
-
-
-
