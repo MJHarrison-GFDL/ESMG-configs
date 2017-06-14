@@ -4,10 +4,13 @@ build*
 .datasets
 # Ignore model output
 *.out
-CPU_stats.*
+CPU_stats*
 _read_error.nml
 available_diags.0*
 SIS.available_diags
+MOM_parameter_doc.all
+SIS_parameter_doc.all
+output
 exitcode
 fort.*
 *.nc
