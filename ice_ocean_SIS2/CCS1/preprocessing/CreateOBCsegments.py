@@ -12,7 +12,9 @@ ssh_data = './data/global_ssh_data.nc'
 momgrd = 'ocean_hgrid.nc'
 srcgrd = 'data/ocean_hgrid.nc'
 
-nt=nc.Dataset(ssh_data).variables['ssh'].shape[0]
+#nt=nc.Dataset(ssh_data).variables['ssh'].shape[0]
+nt=12
+
 
 # ---------- define segments on MOM grid -----------------------
 south = los.obc_segment('segment_001', momgrd,istart=0,iend=360,jstart=0,  jend=0  )
@@ -40,34 +42,35 @@ zeta_west  = lov.obc_variable(west ,'zeta',geometry='line',obctype='flather',use
 xsrc=nc.Dataset(srcgrd).variables['x'][1::2,1::2]
 ysrc=nc.Dataset(srcgrd).variables['y'][1::2,1::2]
 
+
 for kt in np.arange(nt):
 	mm=str(kt+1).zfill(2)
 	# ---------- interpolate T/S from monthly file, frame = kt (jan-dec) and using locstream (x2 speedup)
-	temp_south.interpolate_from( ts_data,'thetao',frame=kt,depthname='zt', \
+ 	temp_south.interpolate_from( ts_data,'thetao',frame=kt,depthname='zt', drown='ncl',\
 	from_global=True,x_coords=xsrc,y_coords=ysrc,method='bilinear')
-	temp_north.interpolate_from( ts_data,'thetao',frame=kt,depthname='zt', \
+	temp_north.interpolate_from( ts_data,'thetao',frame=kt,depthname='zt', drown='ncl', \
 	from_global=True,x_coords=xsrc,y_coords=ysrc,method='bilinear')
-	temp_west.interpolate_from( ts_data,'thetao',frame=kt,depthname='zt', \
+	temp_west.interpolate_from( ts_data,'thetao',frame=kt,depthname='zt', drown='ncl', \
 	from_global=True,x_coords=xsrc,y_coords=ysrc,method='bilinear')
 
-	salt_south.interpolate_from( ts_data,'so',frame=kt,depthname='zt', \
+	salt_south.interpolate_from( ts_data,'so',frame=kt,depthname='zt', drown='ncl', \
 	from_global=True,x_coords=xsrc,y_coords=ysrc,method='bilinear')
-	salt_north.interpolate_from( ts_data,'so',frame=kt,depthname='zt', \
+	salt_north.interpolate_from( ts_data,'so',frame=kt,depthname='zt', drown='ncl',\
 	from_global=True,x_coords=xsrc,y_coords=ysrc,method='bilinear')
-	salt_west.interpolate_from( ts_data,'so',frame=kt,depthname='zt', \
+	salt_west.interpolate_from( ts_data,'so',frame=kt,depthname='zt', drown='ncl', \
 	from_global=True,x_coords=xsrc,y_coords=ysrc,method='bilinear')
+
+	vel_south.interpolate_from( uv_data,'uo','vo',frame=kt,depthname='zt', drown='ncl',  \
+	from_global=True,x_coords_u=xsrc,y_coords_u=ysrc,x_coords_v=xsrc,y_coords_v=ysrc)
+	vel_north.interpolate_from( uv_data,'uo','vo',frame=kt,depthname='zt', drown='ncl', \
+	from_global=True,x_coords_u=xsrc,y_coords_u=ysrc,x_coords_v=xsrc,y_coords_v=ysrc)
+	vel_west.interpolate_from( uv_data,'uo','vo',frame=kt,depthname='zt', drown='ncl', \
+	from_global=True,x_coords_u=xsrc,y_coords_u=ysrc,x_coords_v=xsrc,y_coords_v=ysrc)			
 	
-	vel_south.interpolate_from( uv_data,'uo','vo',frame=kt,depthname='zt', \
-	from_global=True,x_coords=xsrc,y_coords=ysrc)
-	vel_north.interpolate_from( uv_data,'uo','vo',frame=kt,depthname='zt', \
-	from_global=True,x_coords=xsrc,y_coords=ysrc)
-	vel_west.interpolate_from( uv_data,'uo','vo',frame=kt,depthname='zt', \
-	from_global=True,x_coords=xsrc,y_coords=ysrc)		
-
 	# ---------- set constant value for SSH ----------------------
-	zeta_south.interpolate_from(ssh_data,'ssh',frame=kt,from_global=True,x_coords=xsrc,y_coords=ysrc)
-	zeta_north.interpolate_from(ssh_data,'ssh',frame=kt,from_global=True,x_coords=xsrc,y_coords=ysrc)
-	zeta_west.interpolate_from(ssh_data,'ssh',frame=kt,from_global=True,x_coords=xsrc,y_coords=ysrc)	
+	zeta_south.interpolate_from(ssh_data,'ssh',frame=kt,from_global=True,x_coords=xsrc,y_coords=ysrc, drown='ncl')
+	zeta_north.interpolate_from(ssh_data,'ssh',frame=kt,from_global=True,x_coords=xsrc,y_coords=ysrc, drown='ncl')
+	zeta_west.interpolate_from(ssh_data,'ssh',frame=kt,from_global=True,x_coords=xsrc,y_coords=ysrc, drown='ncl')	
 
 	# ---------- list segments and variables to be written -------
 	list_segments = [north,south,west]
@@ -90,7 +93,7 @@ for kt in np.arange(nt):
 	ncdf.write_obc_file(list_segments,list_variables,list_vectvariables,time,output='obc_d' + mm + '_CCS1.nc')
 
 # ---------- concat to a single file ---------------------------------
-cmdcat = 'ncrcat obc_d??_CCS1.nc -O -o obc_daily_CCS1.nc'
+cmdcat = 'ncrcat obc_d??_CCS1.nc -O -o obc_monthly_CCS1.nc'
 cmdclean = 'rm obc_d??_CCS1.nc'
 sp.call(cmdcat,shell=True)
 sp.call(cmdclean,shell=True)
