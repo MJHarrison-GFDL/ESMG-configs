@@ -6,11 +6,11 @@ import subprocess as sp
 import numpy as np
 import netCDF4 as nc
 
-ts_data = './data/global_3d_data.nc'
-uv_data = './data/global_3d_data.nc'
-ssh_data = './data/global_ssh_data.nc'
+ts_data = 'input_data/global_3d_data.nc'
+uv_data = 'input_data/global_3d_data.nc'
+ssh_data = 'input_data/global_ssh_data.nc'
 momgrd = 'ocean_hgrid.nc'
-srcgrd = 'data/ocean_hgrid.nc'
+srcgrd = 'input_data/ocean_hgrid.nc'
 
 #nt=nc.Dataset(ssh_data).variables['ssh'].shape[0]
 nt=12
@@ -94,6 +94,8 @@ for kt in np.arange(nt):
 
 # ---------- concat to a single file ---------------------------------
 cmdcat = 'ncrcat obc_d??_CCS1.nc -O -o obc_monthly_CCS1.nc'
+cmdmod = "ncatted -h -a modulo,time,c,c,' ' obc_monthly_CCS1.nc"
 cmdclean = 'rm obc_d??_CCS1.nc'
 sp.call(cmdcat,shell=True)
+sp.call(cmdmod,shell=True)
 sp.call(cmdclean,shell=True)
