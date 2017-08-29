@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 # In[11]:
 
 #Open ROMS grid file
-if 'nc' not in vars(): nc = scipy.io.netcdf_file('CCS_7k_0-360_fred_grd.nc')
+if 'nc' not in vars(): nc = scipy.io.netcdf_file('http://oceanus.esm.rutgers.edu:8080/thredds/catalog/ROMS/CCS2/CCS2-BKR.HCo02T/Inputs/grid/catalog.html?dataset=roms_ccs2_in/grid/CCS2_smoother_0-360.nc')
 
 
 # In[12]:
