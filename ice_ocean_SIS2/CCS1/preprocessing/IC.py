@@ -21,12 +21,21 @@ R.rename_field('thetao','temp')
 R.rename_field('so','salt')
 R.rename_field('uo','u')
 R.rename_field('vo','v')
+R.adjust_thickness('temp')
+R.adjust_thickness('salt')
+R.adjust_thickness('u')
+R.adjust_thickness('v')
+vdict=R.var_dict['temp'].copy()
+vdict['units']='m'
+h=vdict['dz'].copy()
+h=h[np.newaxis,:]
+R.add_field_from_array(h,'h',vdict)
 R.fill_interior('temp')
 R.fill_interior('salt')
 R.fill_interior('u')
 R.fill_interior('v')
 R.fill_interior('ssh')
-
+R.ssh[:,:,grid.D<0.25]=0.0
 R.v[:,:,np.roll(R.grid.D,shift=-1,axis=0)<0.1]=0.0
 R.v[:,:,0,:]=0.0
 R.v[:,:,-1,:]=0.0
@@ -34,6 +43,6 @@ R.u[:,:,np.roll(R.grid.D,shift=-1,axis=1)<0.1]=0.0
 R.u[:,:,:,0]=0.0
 R.u[:,:,:,-1]=0.0
 
-R.write_nc('IC.nc',['temp','salt','u','v','ssh'])
+R.write_nc('IC.nc',['temp','salt','u','v','h','ssh'],write_interface_positions=True)
 
 
